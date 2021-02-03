@@ -1,30 +1,26 @@
-const { Sequelize } = require("sequelize/types");
-
 module.exports = (sequelize, DataType) => {
 
     const Task = sequelize.define('Task', {
-        id:{
-          type: Sequelize.INTEGER,
-          primaryKey: true,
-          autoIncrement: true
-        },
-        title: {
-            type:Sequelize.STRING,
-            allowNull: false
-        },
-        description: Sequelize.STRING,
-        done: {
-            type: Sequelize.BOOLEAN,
-            defaultValue: false   
-        },
-        deleted: {
-            type: Sequelize.BOOLEAN,
-            defaultValue: false
-        }
+      id: {
+        type: DataType.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+      },
+      title: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
+      done: DataType.BOOLEAN,
+      deleted: DataType.BOOLEAN,
     },
-    {
+      {
+        timestamps: false,
         tableName: "tasks"
-    });
-    
+      });
     return Task;
   }
